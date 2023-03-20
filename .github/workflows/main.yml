@@ -1,0 +1,18 @@
+name: Example Workflow
+
+on: [push]
+
+env:
+  USERNAME_SECRET: ${{ secrets.USERNAME_SECRET }}
+  PASSWORD_SECRET: ${{ secrets.PASSWORD_SECRET }}
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use secrets in script
+        run: |
+          pwsh -f test.ps1
